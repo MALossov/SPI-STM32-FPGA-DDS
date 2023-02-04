@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RadiantProject version="4.2" radiant="2022.1.0.52.3" title="slave_spi_fpga" device="iCE40UP5K-SG48I" performance_grade="High-Performance_1.2V" default_implementation="slave_spi">
+    <Options/>
+    <Implementation title="slave_spi" dir="slave_spi" description="slave_spi" synthesis="lse" default_strategy="Strategy1">
+        <Options def_top="tb_top" top="top"/>
+        <Source name="source/slave_spi/spi_slave.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="source/slave_spi/top.v" type="Verilog" type_short="Verilog">
+            <Options top_module="top"/>
+        </Source>
+        <Source name="source/slave_spi/top_tb.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="source/slave_spi/slave_spi.pdc" type="Physical Constraints File" type_short="PDC">
+            <Options/>
+        </Source>
+        <Source name="source/slave_spi/slave_spi.sdc" type="Pre-Synthesis Constraints File" type_short="SDC">
+            <Options/>
+        </Source>
+        <Source name="top_t/top_t.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Strategy name="Strategy1" file="slave_spi_fpga1.sty"/>
+</RadiantProject>

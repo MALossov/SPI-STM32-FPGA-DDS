@@ -1,0 +1,303 @@
+<HTML>
+<HEAD>
+<TITLE>Lattice TCL Log</TITLE>
+<link href="file:///E:/Radiant/data/theme/css/dark/report.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="file:///E:/Radiant/data/theme/css/print/report.css" rel="stylesheet" type="text/css" media="print"/>
+<style type="text/css">
+#toc {
+  position: fixed;
+  right: 2px;
+  top: 2px;
+  padding: 2px 5px 2px 5px;
+  background-color:rgba(210,210,210,0.1);
+  border-style: solid;
+  border-color: rgba(192,192,192,0.8);
+  border-width:1px;
+}
+#toc_list {
+  display: none;
+  }
+</style>
+
+<script type="text/javascript">
+<!--
+function showTocList() {
+var a = document.getElementById("toc_list");
+a.style.display = "block";
+}
+
+function hideTocList() {
+var a = document.getElementById("toc_list");
+if (a)
+    a.style.display = "none";
+}
+
+//-->
+</script>
+
+</HEAD>
+
+<BODY>
+
+<DIV id="content" onclick="hideTocList()"><PRE>
+<A name="pn230202100804"></A><B><U><big>pn230202100804</big></U></B>
+#Start recording tcl command: 2/2/2023 09:40:06
+#Project Location: F:/Lattice/Prjs/CommuRGB/slave_spi_fpga; Project name: slave_spi_fpga
+prj_create -name "slave_spi_fpga" -impl "slave_spi" -dev iCE40UP5K-SG48I -performance "High-Performance_1.2V" -synthesis "lse"
+prj_add_source "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/source/slave_spi/slave_spi.sdc" "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/source/slave_spi/slave_spi.pdc"
+file copy -force -- "F:/Lattice/Exps/ice40_ultraplus_examples-master/ice40_ultraplus_examples-master/spi/spi_slave.v" "F:/Lattice/Exps/ice40_ultraplus_examples-master/ice40_ultraplus_examples-master/spi/top.v" "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/source/slave_spi"
+prj_add_source "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/source/slave_spi/spi_slave.v" "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/source/slave_spi/top.v"
+prj_save 
+prj_run Synthesis -impl slave_spi
+prj_set_strategy_value -strategy Strategy1 lse_allow_dup_modules=True
+prj_run Synthesis -impl slave_spi
+prj_set_impl_opt -impl "slave_spi" "top" "top"
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_set_strategy_value -strategy Strategy1 bit_out_format=rbt
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+#Stop recording: 2/2/2023 10:08:04
+
+
+
+<A name="pn230202120040"></A><B><U><big>pn230202120040</big></U></B>
+#Start recording tcl command: 2/2/2023 10:24:22
+#Project Location: F:/Lattice/Prjs/CommuRGB/slave_spi_fpga; Project name: slave_spi_fpga
+prj_open "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/slave_spi_fpga.rdf"
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+#Stop recording: 2/2/2023 12:00:40
+
+
+
+<A name="pn230202145830"></A><B><U><big>pn230202145830</big></U></B>
+#Start recording tcl command: 2/2/2023 13:11:14
+#Project Location: F:/Lattice/Prjs/CommuRGB/slave_spi_fpga; Project name: slave_spi_fpga
+prj_open "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/slave_spi_fpga.rdf"
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_add_source "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/source/slave_spi/top_tb.v"
+prj_syn_sim_source -src "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/source/slave_spi/top_tb.v" SimulateOnly
+prj_syn_sim_source -src "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/source/slave_spi/top_tb.v" SynthesisAndSimulate
+prj_add_source "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/top_tb/top_tb.spf"
+prj_add_source "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/top_t/top_t.spf"
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run PAR -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_remove_source "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/top_tb/top_tb.spf"
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run PAR -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_set_strategy_value -strategy Strategy1 lse_allow_dup_modules=False lse_allow_mixed_assignments=True
+prj_run Synthesis -impl slave_spi
+prj_set_strategy_value -strategy Strategy1 lse_allow_dup_modules=True
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+#Stop recording: 2/2/2023 14:58:30
+
+
+
+<A name="pn230202224156"></A><B><U><big>pn230202224156</big></U></B>
+#Start recording tcl command: 2/2/2023 17:43:17
+#Project Location: F:/Lattice/Prjs/CommuRGB/slave_spi_fpga; Project name: slave_spi_fpga
+prj_open "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/slave_spi_fpga.rdf"
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_add_source "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/uspi/uspi.ipx"
+prj_run Synthesis -impl slave_spi
+prj_remove_source "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/uspi/uspi.ipx"
+prj_run Export -impl slave_spi
+prj_run PAR -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_save 
+prj_close
+#Stop recording: 2/2/2023 22:41:56
+
+
+
+<A name="pn230203011527"></A><B><U><big>pn230203011527</big></U></B>
+#Start recording tcl command: 2/2/2023 23:18:11
+#Project Location: F:/Lattice/Prjs/CommuRGB/slave_spi_fpga; Project name: slave_spi_fpga
+prj_open "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/slave_spi_fpga.rdf"
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Synthesis -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+prj_run Export -impl slave_spi
+#Stop recording: 2/3/2023 01:15:27
+
+
+
+<A name="pn230203191041"></A><B><U><big>pn230203191041</big></U></B>
+#Start recording tcl command: 2/3/2023 16:07:12
+#Project Location: F:/Lattice/Prjs/CommuRGB/slave_spi_fpga; Project name: slave_spi_fpga
+prj_open "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/slave_spi_fpga.rdf"
+#Stop recording: 2/3/2023 19:10:41
+
+
+
+<A name="pn230203201229"></A><B><U><big>pn230203201229</big></U></B>
+#Start recording tcl command: 2/3/2023 20:00:15
+#Project Location: F:/Lattice/Prjs/CommuRGB/slave_spi_fpga; Project name: slave_spi_fpga
+prj_open "F:/Lattice/Prjs/CommuRGB/slave_spi_fpga/slave_spi_fpga.rdf"
+#Stop recording: 2/3/2023 20:12:29
+
+
+
+</PRE></DIV>
+
+<DIV id="toc" class="radiant"><span onmousemove="showTocList()">Contents</span>
+<UL id="toc_list">
+<LI><A href=#pn230202100804>pn230202100804</A></LI>
+<LI><A href=#pn230202120040>pn230202120040</A></LI>
+<LI><A href=#pn230202145830>pn230202145830</A></LI>
+<LI><A href=#pn230202224156>pn230202224156</A></LI>
+<LI><A href=#pn230203011527>pn230203011527</A></LI>
+<LI><A href=#pn230203191041>pn230203191041</A></LI>
+<LI><A href=#pn230203201229>pn230203201229</A></LI>
+</UL>
+</DIV>
+
+<button id="back_to_top" class="radiant" onclick="scrollToTop()">&lt;</button>
+<script type="text/javascript">
+<!--
+var scrollStep = 0;
+function scrollToTop(){
+  var funScroll = function() {
+    var top = document.body.scrollTop;
+    if (top == 0) {
+      scrollStep = 0;
+      return;
+    }
+    if (scrollStep == 0)
+      scrollStep = top/20 + 1;
+    top -= scrollStep;
+    if (top < 0)
+      top = 0;
+    document.body.scrollTop = top;
+    requestAnimationFrame(funScroll);
+  };
+  funScroll();
+}
+
+window.addEventListener('scroll', function(e) {
+  var backToTop = document.getElementById('back_to_top')
+  if (document.body.scrollTop > 0) {
+    backToTop.style.display = 'block';
+  } else {	backToTop.style.display = 'none'  }});
+
+//-->
+</script>
+
+<style type="text/css">
+#back_to_top {
+  bottom:20px; right:20px;
+  width:30px; height:30px;
+  font-size: 20px;
+  padding: 2px 5px 2px 5px;
+  position:fixed;
+  background-color:rgba(210,210,210,0.1);
+  border-style: solid;
+  border-color: rgba(192,192,192,0.8);
+  border-width:1px;
+  display:none;
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin:50% 50%;
+}
+#back_to_top:focus {
+  outline-width:0px;
+}
+</style>
+
+</BODY>
+

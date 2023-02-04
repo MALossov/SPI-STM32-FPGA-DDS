@@ -1,0 +1,7 @@
+DRC: Design Rule Check Radiant Software (64-bit) 2022.1.0.52.3
+Thu Feb  2 23:50:54 2023
+
+WARNING - No port matched 'STM32_CLK'.
+WARNING - Can't resolve object 'STM32_CLK' in constraint 'ldc_set_location -site {2} [get_ports STM32_CLK]'.
+WARNING - No port matched 'STM32_CLK'.
+WARNING - Can't resolve object 'STM32_CLK' in constraint 'ldc_set_port -iobuf {IO_TYPE=LVCMOS33} [get_ports STM32_CLK]'.
