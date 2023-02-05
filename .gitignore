@@ -94,3 +94,4 @@ slave_spi_fpga/top_t/*
 slave_spi_fpga/slave_spi_fpga_tcr.dir/*
 MasterSPI_STM32/Drivers/*
 MasterSPI_STM32/MDK-ARM/DebugConfig/*
+.vscode/*

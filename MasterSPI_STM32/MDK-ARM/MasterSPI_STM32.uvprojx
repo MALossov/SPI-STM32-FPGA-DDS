@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32G031xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32G0xx_HAL_Driver/Inc;../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32G0xx/Include;../Drivers/CMSIS/Include;../Core/ssd1306;../Core/Encoder;../Core/SPI_Transmition</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32G0xx_HAL_Driver/Inc;../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32G0xx/Include;../Drivers/CMSIS/Include;../Core/ssd1306;../Core/Encoder;../Core/SPI_Transmition;..\Core\Menu;..\Core\DDS_Control</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -766,6 +766,36 @@
               <FileName>spi_host.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Core\SPI_Transmition\spi_host.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Menu</GroupName>
+          <Files>
+            <File>
+              <FileName>menu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Menu\menu.c</FilePath>
+            </File>
+            <File>
+              <FileName>menu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Menu\menu.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>DDS_Control</GroupName>
+          <Files>
+            <File>
+              <FileName>ddsCtrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\DDS_Control\ddsCtrl.c</FilePath>
+            </File>
+            <File>
+              <FileName>ddsCtrl.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\DDS_Control\ddsCtrl.h</FilePath>
             </File>
           </Files>
         </Group>

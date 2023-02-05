@@ -31,6 +31,8 @@
 #include "stdio.h"
 #include "spi_lib.h"
 #include "spi_host.h"
+#include "menu.h"
+#include "ddsCtrl.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
