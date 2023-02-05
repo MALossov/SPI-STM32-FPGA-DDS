@@ -16,9 +16,9 @@
   *
   ******************************************************************************
   */
-  /* USER CODE END Header */
+/* USER CODE END Header */
 
-  /* Includes ------------------------------------------------------------------*/
+/* Includes ------------------------------------------------------------------*/
 #include "gpio.h"
 
 /* USER CODE BEGIN 0 */
@@ -41,7 +41,7 @@
 void MX_GPIO_Init(void)
 {
 
-  GPIO_InitTypeDef GPIO_InitStruct = { 0 };
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
@@ -49,16 +49,16 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOC_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, OLED_SCK_Pin | OLED_SDA_Pin | OLED_RST_Pin | OLED_DC_Pin
-    | SPI1_NSS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, OLED_SCK_Pin|OLED_SDA_Pin|OLED_RST_Pin|OLED_DC_Pin
+                          |SPI1_NSS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : PAPin PAPin PAPin PAPin
                            PAPin */
-  GPIO_InitStruct.Pin = OLED_SCK_Pin | OLED_SDA_Pin | OLED_RST_Pin | OLED_DC_Pin
-    | SPI1_NSS_Pin;
+  GPIO_InitStruct.Pin = OLED_SCK_Pin|OLED_SDA_Pin|OLED_RST_Pin|OLED_DC_Pin
+                          |SPI1_NSS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -111,7 +111,7 @@ void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 2 */
-// 旋转编码器结构体，用于存储旋转编码器的状态
+// 旋转编码器结构体，用于存储旋转编码器的状�?
 typedef struct {
   enum B_Pin_Set { B_Low, B_High } A_Rising;
   enum B_Pin_Set A_Falling;

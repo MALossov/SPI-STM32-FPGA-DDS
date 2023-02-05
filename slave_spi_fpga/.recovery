@@ -2,7 +2,7 @@
 <RadiantProject version="4.2" radiant="2022.1.0.52.3" title="slave_spi_fpga" device="iCE40UP5K-SG48I" performance_grade="High-Performance_1.2V" default_implementation="slave_spi">
     <Options/>
     <Implementation title="slave_spi" dir="slave_spi" description="slave_spi" synthesis="lse" default_strategy="Strategy1">
-        <Options def_top="tb_top" top="top"/>
+        <Options def_top="u_pll" top="top"/>
         <Source name="source/slave_spi/spi_slave.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -10,6 +10,9 @@
             <Options top_module="top"/>
         </Source>
         <Source name="source/slave_spi/top_tb.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="u_pll/u_pll.ipx" type="IPX_Module" type_short="IPX">
             <Options/>
         </Source>
         <Source name="source/slave_spi/slave_spi.pdc" type="Physical Constraints File" type_short="PDC">

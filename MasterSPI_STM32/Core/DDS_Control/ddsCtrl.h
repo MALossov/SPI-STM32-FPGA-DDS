@@ -12,10 +12,21 @@ typedef enum WaveList {
 
 typedef struct DDS_Wave {
     uint32_t freq;
-    uint8_t amp;
+    uint32_t amp;
     WaveList wave;
+    uint32_t step;
 } DDS_Wave;
 
+typedef enum Action {
+    Increase,
+    Decrease,
+    PauseOrPlay,
+    Reset,
+    ChangeSelection,
+    Waiting
+} Action;
+
+void ModifieDDS(void);
 
 #endif
 

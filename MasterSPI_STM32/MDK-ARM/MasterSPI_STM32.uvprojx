@@ -314,7 +314,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>2</Optim>
+            <Optim>4</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32G031xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32G0xx_HAL_Driver/Inc;../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32G0xx/Include;../Drivers/CMSIS/Include;../Core/ssd1306;../Core/Encoder;../Core/SPI_Transmition;..\Core\Menu;..\Core\DDS_Control</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32G0xx_HAL_Driver/Inc;../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32G0xx/Include;../Drivers/CMSIS/Include;../Core/ssd1306;../Core/Encoder;../Core/SPI_Transmition;../Core/Menu;../Core/DDS_Control</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -751,6 +751,11 @@
               <FileName>spi_lib.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Core\SPI_Transmition\spi_lib.h</FilePath>
+            </File>
+            <File>
+              <FileName>spi_host.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\SPI_Transmition\spi_host.c</FilePath>
             </File>
             <File>
               <FileName>spi_host.h</FileName>
