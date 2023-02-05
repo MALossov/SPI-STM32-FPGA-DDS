@@ -51,3 +51,7 @@ To figure **the detailed Project Discription**, visit:
 > 生成模拟信号的幅度为最大1Vpp，调节范围为0.1V-1V
 > 在OLED上显示当前波形的形状、波形的频率以及幅度
 利用板上旋转编码器和按键能够对波形进行切换、进行参数调节
+
+### License
+
+It's defined in the [LICENSE](LICENSE) file.
