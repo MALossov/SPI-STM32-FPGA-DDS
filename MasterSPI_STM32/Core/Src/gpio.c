@@ -26,6 +26,7 @@
 #include "usart.h"
 #include "stdio.h"
 #include "ssd1306.h"
+#include "menu.h"
 /* USER CODE END 0 */
 
 /*----------------------------------------------------------------------------*/
@@ -114,20 +115,20 @@ void MX_GPIO_Init(void)
 typedef struct {
   enum B_Pin_Set { B_Low, B_High } A_Rising;
   enum B_Pin_Set A_Falling;
-  enum A_Pin_Stat { A_Rised, A_Finished, IDLE } A_State;
+  enum A_Pin_Stat { A_Rised, A_Finished, EncIDLE } A_State;
 
 }Encoder_TypeDef;
-Encoder_TypeDef Encoder = { B_Low, B_High, IDLE };
+Encoder_TypeDef Encoder = { B_Low, B_High, EncIDLE };
+
+// 引入菜单控制
+extern MenuList Menu;
 
 
 void HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin) {
   if (GPIO_Pin == EC11_A_GPIO_PIN) {
-
-    printf("GPIO_Pin == EC11_A_GPIO_PIN_Rising\n");
-    HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-    if (!(Encoder.A_State == IDLE || Encoder.A_State == A_Finished))
+    if (!(Encoder.A_State == EncIDLE || Encoder.A_State == A_Finished))
     {
-      Encoder.A_State = IDLE;
+      Encoder.A_State = EncIDLE;
       return;
     }
 
@@ -144,55 +145,37 @@ void HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin) {
     }
   }
   else if (GPIO_Pin == SW_S2_Pin) {
-    printf("GPIO_Pin == SW_S2_Pin\n");
-    HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-    ssd1306_Fill(Black);
-    ssd1306_SetCursor(25, 53);
-    ssd1306_FillRectangle(0, 51, 128, 64, White);
-    ssd1306_WriteString("SW2 Pressed", Font_7x10, Black);
-    HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_RESET);
-    ssd1306_UpdateScreen();
-    ssd1306_UpdateScreen();
+    Menu.switchFlg = 1;
+    Menu.Switches.SW2 = Switch_Pressed;
   }
 }
 
 void HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin) {
   if (GPIO_Pin == SW_S1_Pin) {
-    HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-    printf("GPIO_Pin == SW_S1_Pin\n");
-    ssd1306_Fill(Black);
-    ssd1306_SetCursor(25, 53);
-    ssd1306_FillRectangle(0, 51, 128, 64, White);
-    ssd1306_WriteString("SW1 Pressed", Font_7x10, Black);
-    HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_SET);
-    ssd1306_UpdateScreen();
+    Menu.switchFlg = 1;
+    Menu.Switches.SW1 = Switch_Pressed;
   }
   else if (GPIO_Pin == Encoder_S_Pin) {
-    HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-    printf("GPIO_Pin == Encoder_S_Pin\n");
-    ssd1306_Fill(Black);
-    ssd1306_SetCursor(15, 53);
-    ssd1306_FillRectangle(0, 51, 128, 64, White);
-    ssd1306_WriteString("Encoder Pressed", Font_7x10, Black);
-    HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_SET);
-    ssd1306_UpdateScreen();
+    Menu.switchFlg = 1;
+    Menu.Switches.ESW = Switch_Pressed;
   }
   else if (GPIO_Pin == EC11_A_GPIO_PIN) {
     Encoder.A_Falling = (enum B_Pin_Set)(HAL_GPIO_ReadPin(Encoder_B_GPIO_Port, Encoder_B_Pin));
-    printf("A_Rising=%d,A_Falling=%d,A_State=%d\n", Encoder.A_Rising, Encoder.A_Falling, Encoder.A_State);
     if (Encoder.A_Falling == B_Low && Encoder.A_Rising == B_High && Encoder.A_State == A_Rised)
     {
       Encoder.A_State = A_Finished;
-      Encoder_Anticlockwise();
+      Menu.encFlg = 1;
+      Menu.Switches.Encoder = AntiClockWise;
     }
     else if (Encoder.A_Falling == B_High && Encoder.A_Rising == B_Low && Encoder.A_State == A_Rised)
     {
       Encoder.A_State = A_Finished;
-      Encoder_Clockwise();
+      Menu.encFlg = 1;
+      Menu.Switches.Encoder = ClockWise;
     }
     else
     {
-      Encoder.A_State = IDLE;
+      Encoder.A_State = EncIDLE;
     }
   }
 

@@ -15,8 +15,8 @@
    *
    ******************************************************************************
    */
-/* USER CODE END Header */
-/* Includes ------------------------------------------------------------------*/
+   /* USER CODE END Header */
+   /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "spi.h"
 #include "tim.h"
@@ -27,7 +27,6 @@
 /* USER CODE BEGIN Includes */
 #include "Rotary_Encoder.h"
 #include "ssd1306.h"
-#include "ssd1306_tests.h"
 #include "stdio.h"
 #include "spi_lib.h"
 #include "spi_host.h"
@@ -52,7 +51,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+extern MenuList Menu;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -101,38 +100,29 @@ int main(void)
   ssd1306_WriteString("Hello World", Font_7x10, White);
   ssd1306_UpdateScreen();
   printf("HelloWorld!\n");
-	HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port,SPI1_NSS_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port,SPI1_NSS_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port,SPI1_NSS_Pin, GPIO_PIN_SET);
-	
-//  uint8_t no_param[3] = { 0x0, 0x0, 0x0 };
-//  uint8_t val_led_yellow[3] = { 0x0, 0x0, 0x3 };
-//  uint8_t val_led_blue[3] = { 0x0, 0x0, 0x4 };
-//  uint8_t spi_status[100];
+  HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_SET);
+
+  Menu_Init();
+
+  //  uint8_t no_param[3] = { 0x0, 0x0, 0x0 };
+  //  uint8_t val_led_yellow[3] = { 0x0, 0x0, 0x3 };
+  //  uint8_t val_led_blue[3] = { 0x0, 0x0, 0x4 };
+  //  uint8_t spi_status[100];
 
 
 
 
-  /* USER CODE END 2 */
+    /* USER CODE END 2 */
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+    /* Infinite loop */
+    /* USER CODE BEGIN WHILE */
   while (1)
   {
-//    HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_RESET);
-//    HAL_SPI_Receive(&hspi1, spi_status, 100, 1000);
-//    HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_SET);
-//    for (uint8_t i = 0; i < 100; i++)
-//    {
-//      printf("spi_status[%d]: %d\n", i, spi_status[i]);
-//    }
-//    HAL_Delay(3000);
-     TestSpiFpga();
-     for (uint8_t i = 4; i > 0; i--)
-     {
-       HAL_Delay(1000);
-       printf("CountDown: %d...\n", i);
-     }
+    if (Menu.encFlg || Menu.switchFlg) {
+      callBackingBtns();
+    }
 
     /* USER CODE END WHILE */
 
@@ -147,8 +137,8 @@ int main(void)
   */
 void SystemClock_Config(void)
 {
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
 
   /** Configure the main internal regulator output voltage
   */
@@ -175,8 +165,8 @@ void SystemClock_Config(void)
 
   /** Initializes the CPU, AHB and APB buses clocks
   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1;
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
+    | RCC_CLOCKTYPE_PCLK1;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
@@ -214,11 +204,11 @@ void Error_Handler(void)
   * @param  line: assert_param error line source number
   * @retval None
   */
-void assert_failed(uint8_t *file, uint32_t line)
+void assert_failed(uint8_t* file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-  /* USER CODE END 6 */
+     /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */

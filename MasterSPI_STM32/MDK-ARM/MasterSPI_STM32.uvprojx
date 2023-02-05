@@ -733,16 +733,6 @@
               <FilePath>..\Core\ssd1306\ssd1306_fonts.h</FilePath>
             </File>
             <File>
-              <FileName>ssd1306_tests.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\ssd1306\ssd1306_tests.c</FilePath>
-            </File>
-            <File>
-              <FileName>ssd1306_tests.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Core\ssd1306\ssd1306_tests.h</FilePath>
-            </File>
-            <File>
               <FileName>ssd1306_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Core\ssd1306\ssd1306_conf.h</FilePath>
