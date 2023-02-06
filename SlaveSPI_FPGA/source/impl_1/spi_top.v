@@ -11,14 +11,14 @@
 //0x07 read vector, the fpga will send 4 * 24bit values
 
 module spi_top( input clk,
-            output LED_R,
-            output LED_G,
-            output LED_B,
-            input SPI_SCK,
-            input SPI_SS,
-            input SPI_MOSI,
-            output SPI_MISO,
-            output [ 3: 0 ] LED_Groups );
+                output LED_R,
+                output LED_G,
+                output LED_B,
+                input SPI_SCK,
+                input SPI_SS,
+                input SPI_MOSI,
+                output SPI_MISO,
+                output [ 3: 0 ] LED_Groups );
 
 reg spi_reset;
 wire spi_wr_buffer_free;
@@ -29,7 +29,7 @@ reg spi_rd_data_available_buf;
 reg spi_rd_ack;
 wire [ 31: 0 ] spi_rd_data;
 
-parameter NOP = 0, INIT = 1, WR_INVERTED = 2, RD_INVERTED = 3, WR_LEDS = 4, RD_LEDS = 5, WR_VEC = 6, RD_VEC = 7;
+parameter NOP = 0, INIT = 1, WR_INVERTED = 2, RD_INVERTED = 3, WR_LEDS = 4, RD_LEDS = 5, WR_VEC = 6, RD_VEC = 7, WR_AMPaWAV = 8, WR_FREQ = 9, RD_DDS = 10;
 
 spi_slave spi_slave_inst( .clk( clk ), .reset( spi_reset ),
                           .SPI_SCK( SPI_SCK ), .SPI_SS( SPI_SS ), .SPI_MOSI( SPI_MOSI ), .SPI_MISO( SPI_MISO ),
@@ -49,6 +49,12 @@ reg [ 7: 0 ] vec_ptr;
 reg sending_vector;
 
 reg [ 2: 0 ] led;
+
+// DDS_REGS
+reg [ 23: 0 ] Freq_reg;
+reg [ 7: 0 ] WaveSet_reg;
+reg [ 15: 0 ] Amp_reg;
+
 
 assign LED_R = ~led[ 0 ];
 assign LED_G = ~led[ 1 ];
@@ -94,11 +100,14 @@ always @( posedge clk ) begin
         spi_wr_data[ 23: 0 ] <= vector[ vec_ptr ];
         if ( vec_ptr < 3 ) begin
             vec_ptr <= vec_ptr + 1;
+            led[ 0 ] = 1;
         end
         else begin
             vec_ptr <= 0;
             sending_vector <= 0;
+            led[ 0 ] = 0;
         end
+
     end
 
     if ( handle_data == 1 ) begin
@@ -128,6 +137,21 @@ always @( posedge clk ) begin
             end
             RD_VEC: begin
                 sending_vector <= 1;
+            end
+            // DDS CMDS
+            RD_DDS: begin
+                vec_ptr <= 0;
+                vector[ 0 ][ 23: 0 ] <= Freq_reg[ 23: 0 ];
+                vector[ 1 ][ 23: 0 ] <= { 16'b0, WaveSet_reg[ 7: 0 ] };
+                vector[ 2 ][ 23: 0 ] <= { 8'b0, Amp_reg[ 15: 0 ] };
+                sending_vector <= 1;
+            end
+            WR_AMPaWAV: begin
+                WaveSet_reg <= spi_recv_data_reg[ 31: 24 ];
+                Amp_reg <= spi_recv_data_reg[ 23: 8 ];
+            end
+            WR_FREQ: begin
+                Freq_reg <= spi_recv_data_reg[ 31: 8 ];
             end
         endcase
         handle_data <= 0;

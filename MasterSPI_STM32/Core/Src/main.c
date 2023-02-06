@@ -97,16 +97,15 @@ int main(void)
   MX_USART2_UART_Init();
   MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
-  ssd1306_Init();
-  ssd1306_WriteString("Hello World", Font_7x10, White);
-  ssd1306_UpdateScreen();
   printf("HelloWorld!\n");
   HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_SET);
-  HAL_TIM_Base_Start_IT(&htim14);
-	Menu.Inited = 0;
+  // HAL_TIM_Base_Start_IT(&htim14);
+  Menu.Inited = 0;
+  ssd1306_Init();
   Menu_Init();
+  HAL_Delay(500);
 
   //  uint8_t no_param[3] = { 0x0, 0x0, 0x0 };
   //  uint8_t val_led_yellow[3] = { 0x0, 0x0, 0x3 };
@@ -128,10 +127,24 @@ int main(void)
     if (Menu.Switches.SwitchAction != Waiting) {
       ModifieDDS();
     }
+    volatile uint32_t freq;
+    freq = 10;
+    WaveList wav = Square;
+    volatile uint16_t amp;
+    amp = 1;
+    for (;freq < 10000000 && amp < 1000;) {
+      spi_write_dds(freq, amp, wav);
+      printf("Write2DDS:freq: %d,amp: %d,wav: %d\n", freq, amp, (uint8_t)wav);
+      spi_dump_dds();
+      amp += 1;freq += 10;
+      break;
+    }
+    //		TestSpiFpga();
 
-    /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
+        /* USER CODE END WHILE */
+
+        /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }

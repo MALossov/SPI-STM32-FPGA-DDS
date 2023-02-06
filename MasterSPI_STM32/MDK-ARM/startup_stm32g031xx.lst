@@ -355,13 +355,13 @@ ARM Macro Assembler    Page 6
   244 00000014                 END
               00000000 
               00000000 
-Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
-work --depend=masterspi_stm32\startup_stm32g031xx.d -omasterspi_stm32\startup_s
-tm32g031xx.o -I.\RTE\_MasterSPI_STM32 -IE:\KEIL_PACKS\ARM\CMSIS\5.9.0\CMSIS\Cor
-e\Include -IE:\KEIL_PACKS\Keil\STM32G0xx_DFP\1.4.0\Drivers\CMSIS\Device\ST\STM3
-2G0xx\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SE
-TA 537" --predefine="_RTE_ SETA 1" --predefine="STM32G031xx SETA 1" --predefine
-="_RTE_ SETA 1" --list=startup_stm32g031xx.lst startup_stm32g031xx.s
+Command Line: --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=interwork --d
+epend=masterspi_stm32\startup_stm32g031xx.d -omasterspi_stm32\startup_stm32g031
+xx.o -I.\RTE\_MasterSPI_STM32 -IE:\KEIL_PACKS\ARM\CMSIS\5.9.0\CMSIS\Core\Includ
+e -IE:\KEIL_PACKS\Keil\STM32G0xx_DFP\1.4.0\Drivers\CMSIS\Device\ST\STM32G0xx\In
+clude --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 537" 
+--predefine="_RTE_ SETA 1" --predefine="STM32G031xx SETA 1" --predefine="_RTE_ 
+SETA 1" --list=startup_stm32g031xx.lst startup_stm32g031xx.s
 
 
 

@@ -1,5 +1,4 @@
 #include "main.h"
-#include "spi_lib.h"
 
 #ifndef __DDS_CTRL_H
 #define __DDS_CTRL_H
@@ -12,7 +11,7 @@ typedef enum WaveList {
 
 typedef struct DDS_Wave {
     uint32_t freq;
-    uint32_t amp;
+    uint16_t amp;
     WaveList wave;
     uint32_t step;
 } DDS_Wave;

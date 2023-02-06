@@ -46,7 +46,6 @@ assign spi_ss_rising_edge = ( spi_ss_reg[ 1: 0 ] == 2'b01 );
 assign spi_ss_falling_edge = ( spi_ss_reg[ 1: 0 ] == 2'b10 );
 
 assign LED_Groups = { ~SPI_MOSI, ~SPI_MISO, ~SPI_SCK, ~state_rd[ 0 ] };
-//assign LED_Groups = 4'b1011;
 
 initial begin
     counter_read = 0;
@@ -75,7 +74,10 @@ always @( posedge clk ) begin
         rd_data <= 0;
         rd_data_local <= 0;
         rd_data_available <= 0;
-		wr_data_reg = 24'hcafe77;
+        wr_reg_full = 0;
+        wr_data_reg = 24'hcafe77;
+        wr_queue_full = 0;
+        wr_data_queue = 0;
         state_rd <= INIT;
     end
     else begin

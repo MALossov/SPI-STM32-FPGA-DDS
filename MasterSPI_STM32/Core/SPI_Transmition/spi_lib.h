@@ -1,6 +1,7 @@
 #include "spi.h"
 #include "main.h"
 #include "stdlib.h"
+#include "menu.h"
 
 #ifndef SPI_LIB_H
 #define SPI_LIB_H
@@ -21,11 +22,17 @@
 #define SPI_READ_REQ_LED 0x05
 #define SPI_SEND_VEC 0x06
 #define SPI_READ_VEC 0x07
+#define SPI_WR_AMPaWAV 0X08
+#define SPI_WR_Freq 0x09
+#define SPI_RD_DDS 0x0A
 
 int spi_send(uint8_t cmd, uint8_t val[3], uint8_t* status);
 int spi_send3(uint8_t cmd, uint8_t val0, uint8_t val1, uint8_t val2, uint8_t* status);
 int spi_send24b(uint8_t cmd, uint32_t val24b, uint8_t* status);
 
 int spi_read(uint8_t val[3], uint8_t* status);
+
+int spi_write_dds(uint32_t freq, uint16_t amp, WaveList wav);
+void spi_dump_dds(void);
 
 #endif

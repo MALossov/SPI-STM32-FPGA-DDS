@@ -26,7 +26,7 @@ initial begin
         #( PERIOD / 8 ) clk = ~clk;
 end
 
-top #(
+spi_top #(
         .NOP ( NOP ) )
     u_top (
         .clk ( clk ),
