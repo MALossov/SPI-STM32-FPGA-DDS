@@ -25,7 +25,7 @@ reg [ 17: 0 ] sin_data; //调幅后的波形数据
 reg [ 17: 0 ] squ_data; //调幅后的波形数据
 reg [ 17: 0 ] tri_data; //调幅后的波形数据
 amp_to_ver u_mp2ver( amp_dat, a_ver );
-always @( posedge clk ) begin
+always @( posedge clk_120M ) begin
     if ( SPI_OK == 1'b1 ) begin
         sin_data = sin_dat * a_ver;  //波形数据乘以调幅因数
         squ_data = squ_dat * a_ver;
@@ -34,7 +34,7 @@ always @( posedge clk ) begin
 end
 
 
-always @( posedge clk ) begin
+always @( posedge clk_120M ) begin
     if ( SPI_OK == 1'b1 ) begin
         case ( pic_dat )
             8'd1: begin

@@ -94,5 +94,6 @@ MasterSPI_STM32/MDK-ARM/DebugConfig/*
 
 SlaveSPI_FPGA/impl_1/*
 slave_spi_fpga/slave_spi_fpga_tcr.dir/*
+!Bin_Files/*
 
 .vscode/*

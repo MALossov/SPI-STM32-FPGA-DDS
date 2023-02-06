@@ -34,17 +34,17 @@ void Publish2DDS() {
     if (Menu.DDS_STATE == DDS_Play) {
         do {
             spi_write_dds(Menu.WaveForm.freq, Menu.WaveForm.amp, Menu.WaveForm.wave);
-            printf("Write2DDS:freq: %d,amp: %d,wav: %d\n", Menu.WaveForm.freq, Menu.WaveForm.amp, (uint8_t)Menu.WaveForm.wave);
+            // printf("Write2DDS:freq: %d,amp: %d,wav: %d\n", Menu.WaveForm.freq, Menu.WaveForm.amp, (uint8_t)Menu.WaveForm.wave);
 
             spi_dump_dds();
-            printf("ReadDDS:freq: %d,wav: %d,amp: %d\n", dds_rd[0], dds_rd[1], dds_rd[2]);
+            // printf("ReadDDS:freq: %d,wav: %d,amp: %d\n", dds_rd[0], dds_rd[1], dds_rd[2]);
         } while (dds_rd[0] != Menu.WaveForm.freq || (uint8_t)dds_rd[1] != (uint8_t)Menu.WaveForm.wave
             || (uint16_t)dds_rd[2] != Menu.WaveForm.amp);
         HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_RESET);
         spi_send(SPI_INIT, no_param, NULL);
         spi_send(SPI_CONF_DDS, led_ptr, &spi_status); // led change
         HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_SET);
-        printf("DDS_Gend!\n==============\n");
+        // printf("DDS_Gend!\n==============\n");
     }
 
 
@@ -117,7 +117,7 @@ void SteplintFormatter(Action act) {
 void AmplitudeFormatter(Action act) {
     uint32_t tmpAmp = Menu.WaveForm.amp;
     tmpAmp += act == Increase ? 50 : -50;
-    if (tmpAmp >= 100 && tmpAmp <= 1000) {
+    if (tmpAmp >= 50 && tmpAmp <= 1000) {
         Menu.WaveForm.amp = tmpAmp;
         update2Data(&Menu.Data[3], Menu.WaveForm.amp, "mV", 3);
     }
