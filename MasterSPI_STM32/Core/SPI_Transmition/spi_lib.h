@@ -1,3 +1,11 @@
+/*
+ * @Description:
+ * @Author: MALossov
+ * @Date: 2023-02-02 17:01:59
+ * @LastEditTime: 2023-02-06 22:21:49
+ * @LastEditors: MALossov
+ * @Reference:
+ */
 #include "spi.h"
 #include "main.h"
 #include "stdlib.h"
@@ -25,6 +33,7 @@
 #define SPI_WR_AMPaWAV 0X08
 #define SPI_WR_Freq 0x09
 #define SPI_RD_DDS 0x0A
+#define SPI_CONF_DDS 0x0B
 
 int spi_send(uint8_t cmd, uint8_t val[3], uint8_t* status);
 int spi_send3(uint8_t cmd, uint8_t val0, uint8_t val1, uint8_t val2, uint8_t* status);

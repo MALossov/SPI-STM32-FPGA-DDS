@@ -1,0 +1,28 @@
+#Start recording tcl command: 2/6/2023 17:35:01
+#Project Location: F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA; Project name: SlaveSPI_FPGA
+prj_open "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/SlaveSPI_FPGA.rdf"
+prj_add_source "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/Top.v"
+prj_set_impl_opt -impl "impl_1" "top" "Top"
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Map -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_add_source "F:/Lattice/Exps/DDS/DDS_output.v" "F:/Lattice/Exps/DDS/DAC.v"
+prj_remove_source "F:/Lattice/Exps/DDS/DDS_output.v"
+prj_remove_source "F:/Lattice/Exps/DDS/DAC.v"
+file copy -force -- "F:/Lattice/Exps/DDS/DAC.v" "F:/Lattice/Exps/DDS/sin_table.v" "F:/Lattice/Exps/DDS/amp_to_ver.v" "F:/Lattice/Exps/DDS/squ_table.v" "F:/Lattice/Exps/DDS/tri_table.v" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1"
+file copy -force -- "F:/Lattice/Exps/DDS/lookup_table_tri.v" "F:/Lattice/Exps/DDS/lookup_table_squ.v" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1"
+prj_add_source "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/DAC.v" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/sin_table.v" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/amp_to_ver.v" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/squ_table.v" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/tri_table.v" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/lookup_table_tri.v" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/lookup_table_squ.v"
+file copy -force -- "F:/Lattice/Exps/DDS/DDS_output.v" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1"
+prj_add_source "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/DDS_output.v"
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+file copy -force -- "F:/Lattice/Exps/DDS/lookup_table_sin.v" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1"
+prj_add_source "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/lookup_table_sin.v"
+prj_run Synthesis -impl impl_1
+prj_syn_sim_source -src "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/spi_top_tb.v" SimulateOnly
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+#Stop recording: 2/6/2023 19:30:27

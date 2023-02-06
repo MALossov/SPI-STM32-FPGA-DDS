@@ -1,0 +1,40 @@
+#Start recording tcl command: 2/6/2023 11:30:51
+#Project Location: F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA; Project name: SlaveSPI_FPGA
+prj_create -name "SlaveSPI_FPGA" -impl "impl_1" -dev iCE40UP5K-SG48I -performance "High-Performance_1.2V" -synthesis "lse"
+prj_add_source "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/impl_1.sdc" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/impl_1.pdc"
+file copy -force -- "F:/Lattice/Prjs/CommuRGB/spi_slave.v" "F:/Lattice/Prjs/CommuRGB/spi_top.v" "F:/Lattice/Prjs/CommuRGB/spi_top_tb.v" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1"
+prj_add_source "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/spi_slave.v" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/spi_top.v" "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/spi_top_tb.v"
+prj_save 
+prj_set_strategy_value -strategy Strategy1 lse_allow_dup_modules=True
+prj_set_impl_opt -impl "impl_1" "top" "spi_top"
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_set_strategy_value -strategy Strategy1 lse_allow_mixed_assignments=True
+prj_run Synthesis -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1 -forceAll
+prj_run Synthesis -impl impl_1
+prj_run Export -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Export -impl impl_1
+prj_set_strategy_value -strategy Strategy1 bit_out_format=rbt
+prj_run Export -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_add_source "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/source/impl_1/u_pll_120mhz/u_pll_120mhz.ipx"
+#Stop recording: 2/6/2023 17:24:02

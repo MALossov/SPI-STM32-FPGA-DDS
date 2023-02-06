@@ -1,7 +1,7 @@
 // receive: byte2 | byte1 | byte0 | opcode/status
 //read all the data, but can write only the two bytes as opcode contains metadata
 
-module spi_slave( input wire clk,
+module spi_slave_4byte( input wire clk,
                   input wire reset,
                   input wire SPI_SCK,
                   input wire SPI_SS,
