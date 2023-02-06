@@ -10,7 +10,7 @@
 //0x06 write vector, the computer will send 4 * 24bit values
 //0x07 read vector, the fpga will send 4 * 24bit values
 
-module top( input clk,
+module spi_top( input clk,
             output LED_R,
             output LED_G,
             output LED_B,
@@ -18,7 +18,6 @@ module top( input clk,
             input SPI_SS,
             input SPI_MOSI,
             output SPI_MISO,
-            output MISO_Out,
             output [ 3: 0 ] LED_Groups );
 
 reg spi_reset;
@@ -30,8 +29,6 @@ reg spi_rd_data_available_buf;
 reg spi_rd_ack;
 wire [ 31: 0 ] spi_rd_data;
 
-
-assign MISO_Out = clk;
 parameter NOP = 0, INIT = 1, WR_INVERTED = 2, RD_INVERTED = 3, WR_LEDS = 4, RD_LEDS = 5, WR_VEC = 6, RD_VEC = 7;
 
 spi_slave spi_slave_inst( .clk( clk ), .reset( spi_reset ),

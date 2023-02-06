@@ -89,9 +89,10 @@ dkms.conf
 MasterSPI/Drivers/*
 MasterSPI_STM32/MDK-ARM/MasterSPI_STM32/*
 MasterSPI_STM32/MDK-ARM/.vscode/*
-slave_spi_fpga/slave_spi/*
-slave_spi_fpga/top_t/*
-slave_spi_fpga/slave_spi_fpga_tcr.dir/*
 MasterSPI_STM32/Drivers/*
 MasterSPI_STM32/MDK-ARM/DebugConfig/*
+
+SlaveSPI_FPGA/impl_1/*
+slave_spi_fpga/slave_spi_fpga_tcr.dir/*
+
 .vscode/*

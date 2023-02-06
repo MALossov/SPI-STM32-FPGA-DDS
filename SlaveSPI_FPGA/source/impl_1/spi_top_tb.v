@@ -1,7 +1,7 @@
 //~ `New testbench
 `timescale  1ns / 1ps
 
-module tb_top;
+module spi_top_tb;
 
 // top Parameters
 parameter PERIOD = 8;
