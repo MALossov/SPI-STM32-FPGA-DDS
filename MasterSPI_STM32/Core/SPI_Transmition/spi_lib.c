@@ -2,7 +2,7 @@
  * @Description: spi_lib.c
  * @Author: MALossov
  * @Date: 2023-02-02 17:01:59
- * @LastEditTime: 2023-02-06 17:10:30
+ * @LastEditTime: 2023-02-07 00:48:07
  * @LastEditors: MALossov
  * @Reference:
  */
@@ -20,6 +20,7 @@ extern uint8_t val_led_yellow[3];
 extern uint8_t val_led_blue[3];
 extern uint8_t val_led_red[3];
 extern uint8_t val_led_green[3];
+uint32_t dds_rd[3];
 
 int spi_send(uint8_t cmd, uint8_t val[3], uint8_t* status) {
   uint8_t to_send[] = { cmd, val[0], val[1], val[2] };
@@ -89,7 +90,7 @@ int spi_write_dds(uint32_t freq, uint16_t amp, WaveList wav) {
   uint8_t status = 0;
   int err = 0;
   HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_RESET);
-	spi_send(SPI_INIT, no_param, NULL);
+  spi_send(SPI_INIT, no_param, NULL);
   err |= spi_send24b(SPI_WR_Freq, freq, &status);
   err |= spi_send24b(SPI_WR_AMPaWAV, ((uint32_t)((uint8_t)wav << 16 | amp)), &status);
   HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_SET);
@@ -98,15 +99,15 @@ int spi_write_dds(uint32_t freq, uint16_t amp, WaveList wav) {
 }
 
 void spi_dump_dds(void) {
-	 HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_RESET);
-	spi_send(SPI_INIT, no_param, NULL);
+  HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_RESET);
+  spi_send(SPI_INIT, no_param, NULL);
   spi_send(SPI_RD_DDS, no_param, &spi_status);
-	uint32_t dds_rd[3];
+
   for (uint8_t i = 0; i < 4; i++) {
     spi_read(data_read, &spi_status);
-		dds_rd[i] = (uint32_t)(data_read[2]<<16|data_read[1]<<8|data_read[0]);
+    dds_rd[i] = (uint32_t)(data_read[2] << 16 | data_read[1] << 8 | data_read[0]);
   }
-	printf("ReadDDS:freq: %d,wav: %d,amp: %d\n",dds_rd[0],dds_rd[1],dds_rd[2]);
-	HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_SET);
+  // printf("ReadDDS:freq: %d,wav: %d,amp: %d\n", dds_rd[0], dds_rd[1], dds_rd[2]);
+  HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_SET);
 }
 

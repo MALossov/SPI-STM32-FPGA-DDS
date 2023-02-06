@@ -5,10 +5,11 @@ module Top( input clk,
             input SPI_SCK,
             input SPI_SS,
             input SPI_MOSI,
+			input rst_n_i,
             output SPI_MISO,
             output wire [3:0]LED_Groups ,
 			output wire [9:0]DAC_d,
-			output DAC_CLK);
+			output wire DAC_clk);
 
 wire [23:0] Freq_reg;
 wire [7:0] WaveSet_reg;
@@ -16,11 +17,13 @@ wire [15:0] Amp_reg;
 wire [9:0] dac_dat;
 
 
+
+
 u_pll_120mhz u_u_pll_120mhz(
                  .ref_clk_i ( clk ),
                  .rst_n_i ( rst_n_i ),
-                 .outcore_o ( outcore_o),
-                 .outglobal_o ( clk_pll )
+                 .outcore_o ( clk_pll),
+                 .outglobal_o ( outglobal_o )
              );
 spi_top u_spi_top(
             .clk ( clk ),

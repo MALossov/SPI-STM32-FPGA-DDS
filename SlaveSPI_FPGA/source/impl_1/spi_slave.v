@@ -2,19 +2,19 @@
 //read all the data, but can write only the two bytes as opcode contains metadata
 
 module spi_slave_4byte( input wire clk,
-                  input wire reset,
-                  input wire SPI_SCK,
-                  input wire SPI_SS,
-                  input wire SPI_MOSI,
-                  output wire SPI_MISO,
-                  output wire wr_buffer_free,
-                  input wire wr_en,
-                  input wire [ 23: 0 ] wr_data,
-                  output reg rd_data_available,
-                  input wire rd_ack,
-                  output reg [ 31: 0 ] rd_data,
-                  output wire [ 3: 0 ] LED_Groups
-                );
+                        input wire reset,
+                        input wire SPI_SCK,
+                        input wire SPI_SS,
+                        input wire SPI_MOSI,
+                        output wire SPI_MISO,
+                        output wire wr_buffer_free,
+                        input wire wr_en,
+                        input wire [ 23: 0 ] wr_data,
+                        output reg rd_data_available,
+                        input wire rd_ack,
+                        output reg [ 31: 0 ] rd_data,
+                        output wire [ 3: 0 ] LED_Groups
+                      );
 
 reg [ 4: 0 ] counter_read; //max 32
 
@@ -45,7 +45,7 @@ assign spi_clk_falling_edge = ( spi_clk_reg[ 1: 0 ] == 2'b10 );
 assign spi_ss_rising_edge = ( spi_ss_reg[ 1: 0 ] == 2'b01 );
 assign spi_ss_falling_edge = ( spi_ss_reg[ 1: 0 ] == 2'b10 );
 
-assign LED_Groups = { ~SPI_MOSI, ~SPI_MISO, ~SPI_SCK, ~state_rd[ 0 ] };
+assign LED_Groups = { ~state_rd[1:0], ~SPI_SCK, ~state_rd[ 0 ] };
 
 initial begin
     counter_read = 0;
@@ -53,9 +53,7 @@ initial begin
     spi_ss_reg = 0;
     mosi_reg = 0;
     miso_out_reg = 0;
-    state_rd = INIT;
     wr_reg_full = 0;
-    wr_data_reg = 24'hcafe77;
     wr_queue_full = 0;
     wr_data_queue = 0;
 
@@ -74,10 +72,10 @@ always @( posedge clk ) begin
         rd_data <= 0;
         rd_data_local <= 0;
         rd_data_available <= 0;
-        wr_reg_full = 0;
-        wr_data_reg = 24'hcafe77;
-        wr_queue_full = 0;
-        wr_data_queue = 0;
+        wr_reg_full <= 0;
+        wr_data_reg <= 24'hcafe77;
+        wr_queue_full <= 0;
+        wr_data_queue <= 0;
         state_rd <= INIT;
     end
     else begin

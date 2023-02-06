@@ -34,19 +34,19 @@ always @( posedge clk ) begin
 end
 
 
-always @( posedge clk) begin
-	if ( SPI_OK == 1'b1 ) begin
+always @( posedge clk ) begin
+    if ( SPI_OK == 1'b1 ) begin
         case ( pic_dat )
             8'd1: begin
-                dac_dat <= squ_data[ 17: 8 ];
-            end //·½²¨
+                dac_dat = sin_data[ 17: 8 ];
+            end
+            8'd2: begin
+                dac_dat = squ_data[ 17: 8 ];
+            end
             8'd3: begin
-                dac_dat <= tri_data[ 17: 8 ];
-            end //Èý½Ç²¨
-            8'd1: begin
-                dac_dat <= sin_data[ 17: 8 ];
-            end //ÕýÏÒ²¨
+                dac_dat = tri_data[ 17: 8 ];
+            end
         endcase
-	end
+    end
 end
 endmodule

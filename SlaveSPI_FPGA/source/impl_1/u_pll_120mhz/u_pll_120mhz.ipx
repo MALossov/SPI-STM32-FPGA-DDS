@@ -1,12 +1,12 @@
 <?xml version="1.0" ?>
-<RadiantModule architecture="iCE40UP" date="2023 02 06 17:50:42" device="iCE40UP5K" generator="ipgen" library="module" module="pll" name="u_pll_120mhz" package="SG48" source_format="Verilog" speed="High-Performance_1.2V" vendor="latticesemi.com" version="1.0.1">
+<RadiantModule architecture="iCE40UP" date="2023 02 07 02:16:04" device="iCE40UP5K" generator="ipgen" library="module" module="pll" name="u_pll_120mhz" package="SG48" source_format="Verilog" speed="High-Performance_1.2V" vendor="latticesemi.com" version="1.0.1">
  <Package>
-  <File modified="2023 02 06 17:50:42" name="rtl/u_pll_120mhz_bb.v" type="black_box_verilog"/>
-  <File modified="2023 02 06 17:50:42" name="u_pll_120mhz.cfg" type="cfg"/>
-  <File modified="2023 02 06 17:50:42" name="misc/u_pll_120mhz_tmpl.v" type="template_verilog"/>
-  <File modified="2023 02 06 17:50:42" name="misc/u_pll_120mhz_tmpl.vhd" type="template_vhdl"/>
-  <File modified="2023 02 06 17:50:42" name="rtl/u_pll_120mhz.v" type="top_level_verilog"/>
-  <File modified="2023 02 06 17:50:42" name="component.xml" type="IP-XACT_component"/>
-  <File modified="2023 02 06 17:50:42" name="design.xml" type="IP-XACT_design"/>
+  <File modified="2023 02 07 02:16:04" name="rtl/u_pll_120mhz_bb.v" type="black_box_verilog"/>
+  <File modified="2023 02 07 02:16:04" name="u_pll_120mhz.cfg" type="cfg"/>
+  <File modified="2023 02 07 02:16:04" name="misc/u_pll_120mhz_tmpl.v" type="template_verilog"/>
+  <File modified="2023 02 07 02:16:04" name="misc/u_pll_120mhz_tmpl.vhd" type="template_vhdl"/>
+  <File modified="2023 02 07 02:16:04" name="rtl/u_pll_120mhz.v" type="top_level_verilog"/>
+  <File modified="2023 02 07 02:16:04" name="component.xml" type="IP-XACT_component"/>
+  <File modified="2023 02 07 02:16:04" name="design.xml" type="IP-XACT_design"/>
  </Package>
 </RadiantModule>

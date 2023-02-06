@@ -1,5 +1,3 @@
-`include "spi_slave.v"
-
 //opcodes:
 //0x00 nop
 //0x01 init

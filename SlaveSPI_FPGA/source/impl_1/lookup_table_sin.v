@@ -21,20 +21,20 @@ always @(sel or sine_table_out)
 begin
 	case(sel)
 	2'b00: 	begin
-			sine_onecycle_amp = 9'h1ff + sine_table_out[8:0];
-			address = phase[5:0];
+			sine_onecycle_amp <= 9'h1ff + sine_table_out[8:0];
+			address <= phase[5:0];
 	     	end
   	2'b01: 	begin
-			sine_onecycle_amp = 9'h1ff + sine_table_out[8:0];
-			address = ~phase[5:0];
+			sine_onecycle_amp <= 9'h1ff + sine_table_out[8:0];
+			address <= ~phase[5:0];
 	     	end
   	2'b10: 	begin
-			sine_onecycle_amp = 9'h1ff - sine_table_out[8:0];
-			address = phase[5:0];
+			sine_onecycle_amp <= 9'h1ff - sine_table_out[8:0];
+			address <= phase[5:0];
      		end
   	2'b11: 	begin
-			sine_onecycle_amp = 9'h1ff - sine_table_out[8:0];
-			address = ~ phase[5:0];
+			sine_onecycle_amp <= 9'h1ff - sine_table_out[8:0];
+			address <= ~ phase[5:0];
      		end
 	endcase
 end

@@ -107,13 +107,7 @@ int main(void)
   Menu_Init();
   HAL_Delay(500);
 
-  //  uint8_t no_param[3] = { 0x0, 0x0, 0x0 };
-  //  uint8_t val_led_yellow[3] = { 0x0, 0x0, 0x3 };
-  //  uint8_t val_led_blue[3] = { 0x0, 0x0, 0x4 };
-  //  uint8_t spi_status[100];
-
-
-
+  HAL_TIM_Base_Start_IT(&htim14);
 
   /* USER CODE END 2 */
 
@@ -126,18 +120,6 @@ int main(void)
     }
     if (Menu.Switches.SwitchAction != Waiting) {
       ModifieDDS();
-    }
-    volatile uint32_t freq;
-    freq = 10;
-    WaveList wav = Square;
-    volatile uint16_t amp;
-    amp = 1;
-    for (;freq < 10000000 && amp < 1000;) {
-      spi_write_dds(freq, amp, wav);
-      printf("Write2DDS:freq: %d,amp: %d,wav: %d\n", freq, amp, (uint8_t)wav);
-      spi_dump_dds();
-      amp += 1;freq += 10;
-      break;
     }
     //		TestSpiFpga();
 
