@@ -1,0 +1,4 @@
+#Start recording tcl command: 3/1/2023 09:34:26
+#Project Location: F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA; Project name: SlaveSPI_FPGA
+prj_open "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/SlaveSPI_FPGA.rdf"
+#Stop recording: 3/1/2023 10:58:06

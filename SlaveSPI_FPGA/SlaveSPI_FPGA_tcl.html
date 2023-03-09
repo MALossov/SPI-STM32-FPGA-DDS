@@ -186,6 +186,34 @@ prj_run Export -impl impl_1
 
 
 
+<A name="pn230207034544"></A><B><U><big>pn230207034544</big></U></B>
+#Start recording tcl command: 2/7/2023 02:10:34
+#Project Location: F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA; Project name: SlaveSPI_FPGA
+prj_open "F:/Lattice/Prjs/CommuRGB/SlaveSPI_FPGA/SlaveSPI_FPGA.rdf"
+prj_set_strategy_value -strategy Strategy1 lse_decode_unreachable_states=True lse_rwcheck_on_ram=True lse_frequency=12
+prj_set_strategy_value -strategy Strategy1 lse_allow_dup_modules=False lse_allow_mixed_assignments=False
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_set_impl_opt synthesis "synplify"
+prj_run Export -impl impl_1
+prj_set_impl_opt synthesis "lse"
+prj_set_strategy_value -strategy Strategy1 lse_dsp_style=Logic lse_loop_limit=2500
+prj_run Export -impl impl_1
+prj_set_strategy_value -strategy Strategy1 lse_dsp_style=DSP lse_res_sharing=False lse_frequency=120
+prj_run Export -impl impl_1
+prj_set_strategy_value -strategy Strategy1 syn_frequency=12
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+#Stop recording: 2/7/2023 03:45:44
+
+
+
 </PRE></DIV>
 
 <DIV id="toc" class="radiant"><span onmousemove="showTocList()">Contents</span>
@@ -193,6 +221,7 @@ prj_run Export -impl impl_1
 <LI><A href=#pn230206172402>pn230206172402</A></LI>
 <LI><A href=#pn230206193027>pn230206193027</A></LI>
 <LI><A href=#pn230207021009>pn230207021009</A></LI>
+<LI><A href=#pn230207034544>pn230207034544</A></LI>
 </UL>
 </DIV>
 
