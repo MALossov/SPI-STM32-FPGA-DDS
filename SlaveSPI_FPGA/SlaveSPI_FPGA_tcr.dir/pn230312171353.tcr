@@ -1,0 +1,9 @@
+#Start recording tcl command: 3/12/2023 16:32:16
+#Project Location: H:/CommuRGB/SlaveSPI_FPGA; Project name: SlaveSPI_FPGA
+prj_open "H:/CommuRGB/SlaveSPI_FPGA/SlaveSPI_FPGA.rdf"
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1 -forceAll
+#Stop recording: 3/12/2023 17:13:53

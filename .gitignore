@@ -97,3 +97,4 @@ slave_spi_fpga/slave_spi_fpga_tcr.dir/*
 !Bin_Files/*
 
 .vscode/*
+Videos/
